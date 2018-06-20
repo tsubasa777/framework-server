@@ -1,0 +1,119 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.lunar.framework</groupId>
+	<artifactId>framework-server</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.2.RELEASE</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.boot.version>2.0.2.RELEASE</spring.boot.version>
+		<spring.cloud.version>2.0.0.RC2</spring.cloud.version>
+		<java.version>1.8</java.version>
+		<zeus.version>1.0.0-SNAPSHOT</zeus.version>
+		<druid.version>1.0.18</druid.version>
+		<fasejson.version>1.2.15</fasejson.version>
+		<beetl.version>1.1.6.RELEASE</beetl.version>
+		<beetlsql.version>2.10.19</beetlsql.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 从config server读取配置参数 -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-config</artifactId>
+				<version>${spring.cloud.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud.version}</version>
+				<scope>import</scope>
+			</dependency>
+			
+			<!-- 注册中心 -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-eureka</artifactId>
+			</dependency>
+			
+			<!-- 负载均衡 -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-ribbon</artifactId>
+			</dependency>
+			
+			
+			<!-- common utils -->
+			<dependency>
+			    <groupId>commons-lang</groupId>
+			    <artifactId>commons-lang</artifactId>
+			    <version>1.0.1</version>
+			</dependency>
+			<dependency>
+			    <groupId>commons-beanutils</groupId>
+			    <artifactId>commons-beanutils</artifactId>
+			    <version>1.9.3</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+			<dependency>
+	            <groupId>com.alibaba</groupId>
+	            <artifactId>fastjson</artifactId>
+	            <version>${fasejson.version}</version>
+	        </dependency>
+			
+			
+			<!--beetlSQL -->
+			<dependency>
+				<groupId>com.ibeetl</groupId>
+				<artifactId>beetlsql</artifactId>
+				<version>${beetlsql.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ibeetl</groupId>
+				<artifactId>beetl-framework-starter</artifactId>
+				<version>${beetl.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<scope>runtime</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+	<modules>
+		<module>zeus-core</module>
+		<module>hypnos-repository</module>
+		<module>themis-security</module>
+	</modules>
+</project>
